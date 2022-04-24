@@ -1,8 +1,13 @@
+import * as React from 'react';
 import './App.css';
 
 function App() {
   return (
-      <div className="App" >hello</div>
+      <div className="App" >
+        <h1>
+          Trivia app
+        </h1>
+      </div>
   );
 }
 
