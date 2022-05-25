@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {triviaData} from "./trivia";
 import {Typography, List, ListItem, ListItemText, Divider,Container} from '@mui/material';
 import {decode} from 'html-entities';
@@ -6,46 +6,14 @@ import {decode} from 'html-entities';
     //     this.props.onHandleSelect();
     // }
 
-        function Ans(choice){
-            const [selected,setSelected] = useState(false);
-            return (
-                <>
-                    <ListItem button onClick={() => {this.handleClick(choice);setSelected(true)}} selected={selected}>
-                        <ListItemText primary={choice} />
-                    </ListItem>   
-                </>
-            );
-        }
 
-        const Answer = ({myKey,correct_answer, incorrect_answer1,incorrect_answer2, incorrect_answer3}) => {  
-            const arr = [correct_answer, incorrect_answer1,incorrect_answer2, incorrect_answer3]      
-            return (
-                <>
-                    <List component="nav" aria-label="mailbox folders">
-                        <ListItem button onClick={() => this.handleClick(arr[0])} selected={false}>
-                            <ListItemText primary={arr[0]} />
-                        </ListItem>
-                    <Divider />
-                        <ListItem button onClick={() => this.handleClick(arr[1])} divider selected={false}>
-                            <ListItemText  primary={arr[1]} />
-                        </ListItem>
-                        <ListItem button onClick={() => this.handleClick(arr[2])} selected={false}>
-                            <ListItemText  primary={arr[2]} />
-                        </ListItem>
-                    <Divider light />
-                        <ListItem button onClick={() => this.handleClick(arr[3])} selected={false}>
-                            <ListItemText  primary={arr[3]} />
-                        </ListItem>
-                    </List>     
-                </>
-            );
-        };
 
 class Questions extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            selected:true
+            correct_answers: [],
+            num: 0
         }
         this.handleClick = this.handleClick.bind(this)
     }
@@ -81,7 +49,29 @@ class Questions extends React.Component{
                 </>
             );
         };
-
+        const Answer = ({myKey,correct_answer, incorrect_answer1,incorrect_answer2, incorrect_answer3}) => {  
+            const arr = [correct_answer, incorrect_answer1,incorrect_answer2, incorrect_answer3]      
+            return (
+                <>
+                    <List component="nav" aria-label="mailbox folders">
+                    <ListItem button onClick={() => this.handleClick(arr[0])} selected={false}>
+                        <ListItemText primary={arr[0]} />
+                    </ListItem>
+                    <Divider />
+                    <ListItem button onClick={() => this.handleClick(arr[1])} divider selected={false}>
+                        <ListItemText  primary={arr[1]} />
+                    </ListItem>
+                    <ListItem button onClick={() => this.handleClick(arr[2])} selected={false}>
+                        <ListItemText  primary={arr[2]} />
+                    </ListItem>
+                    <Divider light />
+                    <ListItem button onClick={() => this.handleClick(arr[3])} selected={false}>
+                        <ListItemText  primary={arr[3]} />
+                    </ListItem>
+                    </List>     
+                </>
+            );
+        };
 
         return (
             <>
